@@ -19,6 +19,7 @@
 		1D9030C5190703370046B380 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9030AD190703370046B380 /* UIKit.framework */; };
 		1D9030CD190703370046B380 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D9030CB190703370046B380 /* InfoPlist.strings */; };
 		1D9030CF190703370046B380 /* SoundNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9030CE190703370046B380 /* SoundNotesTests.m */; };
+		1D9030D9190705C60046B380 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9030D8190705C60046B380 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		1D9030CA190703370046B380 /* SoundNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundNotesTests-Info.plist"; sourceTree = "<group>"; };
 		1D9030CC190703370046B380 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D9030CE190703370046B380 /* SoundNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundNotesTests.m; sourceTree = "<group>"; };
+		1D9030D8190705C60046B380 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				1D9030B8190703370046B380 /* RSLAppDelegate.h */,
 				1D9030B9190703370046B380 /* RSLAppDelegate.m */,
 				1D9030BB190703370046B380 /* Images.xcassets */,
+				1D9030D8190705C60046B380 /* Main.storyboard */,
 				1D9030B0190703370046B380 /* Supporting Files */,
 			);
 			path = SoundNotes;
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D9030D9190705C60046B380 /* Main.storyboard in Resources */,
 				1D9030B4190703370046B380 /* InfoPlist.strings in Resources */,
 				1D9030BC190703370046B380 /* Images.xcassets in Resources */,
 			);
