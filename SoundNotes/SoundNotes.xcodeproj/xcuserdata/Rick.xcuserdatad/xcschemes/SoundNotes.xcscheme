@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D9030A5190703370046B380"
+               BlueprintIdentifier = "1D0986B31912DB7D00F78C8C"
                BuildableName = "SoundNotes.app"
                BlueprintName = "SoundNotes"
                ReferencedContainer = "container:SoundNotes.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D9030C0190703370046B380"
+               BlueprintIdentifier = "1D0986D31912DB7D00F78C8C"
                BuildableName = "SoundNotesTests.xctest"
                BlueprintName = "SoundNotesTests"
                ReferencedContainer = "container:SoundNotes.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D9030A5190703370046B380"
+            BlueprintIdentifier = "1D0986B31912DB7D00F78C8C"
             BuildableName = "SoundNotes.app"
             BlueprintName = "SoundNotes"
             ReferencedContainer = "container:SoundNotes.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D9030A5190703370046B380"
+            BlueprintIdentifier = "1D0986B31912DB7D00F78C8C"
             BuildableName = "SoundNotes.app"
             BlueprintName = "SoundNotes"
             ReferencedContainer = "container:SoundNotes.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D9030A5190703370046B380"
+            BlueprintIdentifier = "1D0986B31912DB7D00F78C8C"
             BuildableName = "SoundNotes.app"
             BlueprintName = "SoundNotes"
             ReferencedContainer = "container:SoundNotes.xcodeproj">

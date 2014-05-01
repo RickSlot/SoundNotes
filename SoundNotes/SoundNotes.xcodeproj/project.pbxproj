@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D0986B81912DB7D00F78C8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986B71912DB7D00F78C8C /* Foundation.framework */; };
+		1D0986BA1912DB7D00F78C8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986B91912DB7D00F78C8C /* CoreGraphics.framework */; };
+		1D0986BC1912DB7D00F78C8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986BB1912DB7D00F78C8C /* UIKit.framework */; };
+		1D0986BE1912DB7D00F78C8C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986BD1912DB7D00F78C8C /* CoreData.framework */; };
+		1D0986C41912DB7D00F78C8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986C21912DB7D00F78C8C /* InfoPlist.strings */; };
+		1D0986C61912DB7D00F78C8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986C51912DB7D00F78C8C /* main.m */; };
+		1D0986CA1912DB7D00F78C8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986C91912DB7D00F78C8C /* AppDelegate.m */; };
+		1D0986CD1912DB7D00F78C8C /* SoundNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986CB1912DB7D00F78C8C /* SoundNotes.xcdatamodeld */; };
+		1D0986CF1912DB7D00F78C8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986CE1912DB7D00F78C8C /* Images.xcassets */; };
+		1D0986D61912DB7D00F78C8C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986D51912DB7D00F78C8C /* XCTest.framework */; };
+		1D0986D71912DB7D00F78C8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986B71912DB7D00F78C8C /* Foundation.framework */; };
+		1D0986D81912DB7D00F78C8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986BB1912DB7D00F78C8C /* UIKit.framework */; };
+		1D0986D91912DB7D00F78C8C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986BD1912DB7D00F78C8C /* CoreData.framework */; };
+		1D0986E11912DB7D00F78C8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */; };
+		1D0986E31912DB7D00F78C8C /* SoundNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D0986DA1912DB7D00F78C8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D0986AC1912DB7D00F78C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D0986B31912DB7D00F78C8C;
+			remoteInfo = SoundNotes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D0986B41912DB7D00F78C8C /* SoundNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0986B71912DB7D00F78C8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D0986B91912DB7D00F78C8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1D0986BB1912DB7D00F78C8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1D0986BD1912DB7D00F78C8C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1D0986C11912DB7D00F78C8C /* SoundNotes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundNotes-Info.plist"; sourceTree = "<group>"; };
+		1D0986C31912DB7D00F78C8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D0986C51912DB7D00F78C8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1D0986C71912DB7D00F78C8C /* SoundNotes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundNotes-Prefix.pch"; sourceTree = "<group>"; };
+		1D0986C81912DB7D00F78C8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1D0986C91912DB7D00F78C8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1D0986CC1912DB7D00F78C8C /* SoundNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoundNotes.xcdatamodel; sourceTree = "<group>"; };
+		1D0986CE1912DB7D00F78C8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1D0986D41912DB7D00F78C8C /* SoundNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D0986D51912DB7D00F78C8C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1D0986DE1912DB7D00F78C8C /* SoundNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundNotesTests-Info.plist"; sourceTree = "<group>"; };
+		1D0986E01912DB7D00F78C8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundNotesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D0986B11912DB7D00F78C8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986BA1912DB7D00F78C8C /* CoreGraphics.framework in Frameworks */,
+				1D0986BE1912DB7D00F78C8C /* CoreData.framework in Frameworks */,
+				1D0986BC1912DB7D00F78C8C /* UIKit.framework in Frameworks */,
+				1D0986B81912DB7D00F78C8C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0986D11912DB7D00F78C8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986D61912DB7D00F78C8C /* XCTest.framework in Frameworks */,
+				1D0986D91912DB7D00F78C8C /* CoreData.framework in Frameworks */,
+				1D0986D81912DB7D00F78C8C /* UIKit.framework in Frameworks */,
+				1D0986D71912DB7D00F78C8C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D0986AB1912DB7D00F78C8C = {
+			isa = PBXGroup;
+			children = (
+				1D0986BF1912DB7D00F78C8C /* SoundNotes */,
+				1D0986DC1912DB7D00F78C8C /* SoundNotesTests */,
+				1D0986B61912DB7D00F78C8C /* Frameworks */,
+				1D0986B51912DB7D00F78C8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D0986B51912DB7D00F78C8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986B41912DB7D00F78C8C /* SoundNotes.app */,
+				1D0986D41912DB7D00F78C8C /* SoundNotesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D0986B61912DB7D00F78C8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986B71912DB7D00F78C8C /* Foundation.framework */,
+				1D0986B91912DB7D00F78C8C /* CoreGraphics.framework */,
+				1D0986BB1912DB7D00F78C8C /* UIKit.framework */,
+				1D0986BD1912DB7D00F78C8C /* CoreData.framework */,
+				1D0986D51912DB7D00F78C8C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1D0986BF1912DB7D00F78C8C /* SoundNotes */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986C81912DB7D00F78C8C /* AppDelegate.h */,
+				1D0986C91912DB7D00F78C8C /* AppDelegate.m */,
+				1D0986CE1912DB7D00F78C8C /* Images.xcassets */,
+				1D0986CB1912DB7D00F78C8C /* SoundNotes.xcdatamodeld */,
+				1D0986C01912DB7D00F78C8C /* Supporting Files */,
+			);
+			path = SoundNotes;
+			sourceTree = "<group>";
+		};
+		1D0986C01912DB7D00F78C8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986C11912DB7D00F78C8C /* SoundNotes-Info.plist */,
+				1D0986C21912DB7D00F78C8C /* InfoPlist.strings */,
+				1D0986C51912DB7D00F78C8C /* main.m */,
+				1D0986C71912DB7D00F78C8C /* SoundNotes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D0986DC1912DB7D00F78C8C /* SoundNotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */,
+				1D0986DD1912DB7D00F78C8C /* Supporting Files */,
+			);
+			path = SoundNotesTests;
+			sourceTree = "<group>";
+		};
+		1D0986DD1912DB7D00F78C8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986DE1912DB7D00F78C8C /* SoundNotesTests-Info.plist */,
+				1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D0986B31912DB7D00F78C8C /* SoundNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D0986E61912DB7D00F78C8C /* Build configuration list for PBXNativeTarget "SoundNotes" */;
+			buildPhases = (
+				1D0986B01912DB7D00F78C8C /* Sources */,
+				1D0986B11912DB7D00F78C8C /* Frameworks */,
+				1D0986B21912DB7D00F78C8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoundNotes;
+			productName = SoundNotes;
+			productReference = 1D0986B41912DB7D00F78C8C /* SoundNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1D0986D31912DB7D00F78C8C /* SoundNotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D0986E91912DB7D00F78C8C /* Build configuration list for PBXNativeTarget "SoundNotesTests" */;
+			buildPhases = (
+				1D0986D01912DB7D00F78C8C /* Sources */,
+				1D0986D11912DB7D00F78C8C /* Frameworks */,
+				1D0986D21912DB7D00F78C8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D0986DB1912DB7D00F78C8C /* PBXTargetDependency */,
+			);
+			name = SoundNotesTests;
+			productName = SoundNotesTests;
+			productReference = 1D0986D41912DB7D00F78C8C /* SoundNotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D0986AC1912DB7D00F78C8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Rick Slot";
+				TargetAttributes = {
+					1D0986D31912DB7D00F78C8C = {
+						TestTargetID = 1D0986B31912DB7D00F78C8C;
+					};
+				};
+			};
+			buildConfigurationList = 1D0986AF1912DB7D00F78C8C /* Build configuration list for PBXProject "SoundNotes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1D0986AB1912DB7D00F78C8C;
+			productRefGroup = 1D0986B51912DB7D00F78C8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D0986B31912DB7D00F78C8C /* SoundNotes */,
+				1D0986D31912DB7D00F78C8C /* SoundNotesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D0986B21912DB7D00F78C8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986C41912DB7D00F78C8C /* InfoPlist.strings in Resources */,
+				1D0986CF1912DB7D00F78C8C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0986D21912DB7D00F78C8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986E11912DB7D00F78C8C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D0986B01912DB7D00F78C8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986CA1912DB7D00F78C8C /* AppDelegate.m in Sources */,
+				1D0986C61912DB7D00F78C8C /* main.m in Sources */,
+				1D0986CD1912DB7D00F78C8C /* SoundNotes.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D0986D01912DB7D00F78C8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D0986E31912DB7D00F78C8C /* SoundNotesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D0986DB1912DB7D00F78C8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D0986B31912DB7D00F78C8C /* SoundNotes */;
+			targetProxy = 1D0986DA1912DB7D00F78C8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1D0986C21912DB7D00F78C8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D0986C31912DB7D00F78C8C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D0986E01912DB7D00F78C8C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D0986E41912DB7D00F78C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1D0986E51912DB7D00F78C8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D0986E71912DB7D00F78C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
+				INFOPLIST_FILE = "SoundNotes/SoundNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1D0986E81912DB7D00F78C8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
+				INFOPLIST_FILE = "SoundNotes/SoundNotes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1D0986EA1912DB7D00F78C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SoundNotes.app/SoundNotes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SoundNotesTests/SoundNotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1D0986EB1912DB7D00F78C8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SoundNotes.app/SoundNotes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
+				INFOPLIST_FILE = "SoundNotesTests/SoundNotesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D0986AF1912DB7D00F78C8C /* Build configuration list for PBXProject "SoundNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0986E41912DB7D00F78C8C /* Debug */,
+				1D0986E51912DB7D00F78C8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D0986E61912DB7D00F78C8C /* Build configuration list for PBXNativeTarget "SoundNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0986E71912DB7D00F78C8C /* Debug */,
+				1D0986E81912DB7D00F78C8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1D0986E91912DB7D00F78C8C /* Build configuration list for PBXNativeTarget "SoundNotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D0986EA1912DB7D00F78C8C /* Debug */,
+				1D0986EB1912DB7D00F78C8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D0986CB1912DB7D00F78C8C /* SoundNotes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D0986CC1912DB7D00F78C8C /* SoundNotes.xcdatamodel */,
+			);
+			currentVersion = 1D0986CC1912DB7D00F78C8C /* SoundNotes.xcdatamodel */;
+			path = SoundNotes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1D0986AC1912DB7D00F78C8C /* Project object */;
+}
