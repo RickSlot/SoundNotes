@@ -22,6 +22,11 @@
 		1D0986D91912DB7D00F78C8C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0986BD1912DB7D00F78C8C /* CoreData.framework */; };
 		1D0986E11912DB7D00F78C8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */; };
 		1D0986E31912DB7D00F78C8C /* SoundNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */; };
+		1D0986ED1912DBCD00F78C8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986EC1912DBCD00F78C8C /* Main.storyboard */; };
+		1D23312E1915425900006151 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23312D1915425900006151 /* Instruments.m */; };
+		1D2331311915425900006151 /* SoundNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2331301915425900006151 /* SoundNote.m */; };
+		1D233134191547F800006151 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D233133191547F800006151 /* MainViewController.m */; };
+		1DBDE28C1916C024004B1F1A /* InstrumentsTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,15 @@
 		1D0986DE1912DB7D00F78C8C /* SoundNotesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundNotesTests-Info.plist"; sourceTree = "<group>"; };
 		1D0986E01912DB7D00F78C8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundNotesTests.m; sourceTree = "<group>"; };
+		1D0986EC1912DBCD00F78C8C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1D23312C1915425900006151 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
+		1D23312D1915425900006151 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
+		1D23312F1915425900006151 /* SoundNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundNote.h; sourceTree = "<group>"; };
+		1D2331301915425900006151 /* SoundNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundNote.m; sourceTree = "<group>"; };
+		1D233132191547F800006151 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		1D233133191547F800006151 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		1DBDE28A1916C024004B1F1A /* InstrumentsTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentsTableTableViewController.h; sourceTree = "<group>"; };
+		1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentsTableTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +129,9 @@
 		1D0986BF1912DB7D00F78C8C /* SoundNotes */ = {
 			isa = PBXGroup;
 			children = (
+				1D2331371915482D00006151 /* view */,
+				1D2331361915481700006151 /* controller */,
+				1D2331351915480600006151 /* model */,
 				1D0986C81912DB7D00F78C8C /* AppDelegate.h */,
 				1D0986C91912DB7D00F78C8C /* AppDelegate.m */,
 				1D0986CE1912DB7D00F78C8C /* Images.xcassets */,
@@ -151,6 +168,36 @@
 				1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D2331351915480600006151 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1D23312F1915425900006151 /* SoundNote.h */,
+				1D2331301915425900006151 /* SoundNote.m */,
+				1D23312C1915425900006151 /* Instruments.h */,
+				1D23312D1915425900006151 /* Instruments.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		1D2331361915481700006151 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DBDE28A1916C024004B1F1A /* InstrumentsTableTableViewController.h */,
+				1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */,
+				1D233132191547F800006151 /* MainViewController.h */,
+				1D233133191547F800006151 /* MainViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		1D2331371915482D00006151 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1D0986EC1912DBCD00F78C8C /* Main.storyboard */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0986ED1912DBCD00F78C8C /* Main.storyboard in Resources */,
 				1D0986C41912DB7D00F78C8C /* InfoPlist.strings in Resources */,
 				1D0986CF1912DB7D00F78C8C /* Images.xcassets in Resources */,
 			);
@@ -248,9 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D23312E1915425900006151 /* Instruments.m in Sources */,
+				1D233134191547F800006151 /* MainViewController.m in Sources */,
 				1D0986CA1912DB7D00F78C8C /* AppDelegate.m in Sources */,
 				1D0986C61912DB7D00F78C8C /* main.m in Sources */,
 				1D0986CD1912DB7D00F78C8C /* SoundNotes.xcdatamodeld in Sources */,
+				1D2331311915425900006151 /* SoundNote.m in Sources */,
+				1DBDE28C1916C024004B1F1A /* InstrumentsTableTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +499,7 @@
 				1D0986E81912DB7D00F78C8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D0986E91912DB7D00F78C8C /* Build configuration list for PBXNativeTarget "SoundNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +508,7 @@
 				1D0986EB1912DB7D00F78C8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

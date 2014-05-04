@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Instruments" representedClassName="Instruments" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lyrics" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="soundFile" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="soundNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SoundNote" inverseName="instruments" inverseEntity="SoundNote" syncable="YES"/>
+    </entity>
+    <entity name="SoundNote" representedClassName="SoundNote" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="instruments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Instruments" inverseName="soundNote" inverseEntity="Instruments" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Instruments" positionX="180" positionY="99" width="128" height="133"/>
+        <element name="SoundNote" positionX="-63" positionY="-18" width="128" height="88"/>
+    </elements>
 </model>
