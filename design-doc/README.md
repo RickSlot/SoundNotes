@@ -19,9 +19,17 @@ Design doc
 ##Classess
 Model classes for the core data entitys can be generated
 
+
+
 ###MainTableViewController
 
 ```Objective-C
+
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 - (void)viewDidLoad;
 /* get results with core data */
 -(NSFetchedResultsController *) fetchedResultsController;
