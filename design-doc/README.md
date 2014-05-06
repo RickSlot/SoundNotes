@@ -60,4 +60,24 @@ Model classes for the core data entitys can be generated
 ```
 
 
+###InstrumentsTableViewController
+This class has the same methods as the maintableviewcontroller, except that everything that is loaded is instrument specifix and not soundnote.
+
+```Objective-C
+@property (nonatomic, strong) SoundRecorder *soundRecorder;
+@property (nonatomic, strong) SoundNote *soundNote;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+```
+
+###SoundRecorder
+This class is used to record and play sounds
+
+```Objective-C
+
+-(void) recordAndSaveSoundToPath:(NSString *) soundpath;
+-(void) playSoundFromPath:(NSString *) soundpath;
+```
+
+
 
