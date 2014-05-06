@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="749" y="118"/>
         </scene>
-        <!--Instruments Table Table View Controller-->
+        <!--Instruments Table Table View Controller - Instruments-->
         <scene sceneID="C6o-Cf-hcg">
             <objects>
                 <tableViewController id="kcF-HJ-VcJ" customClass="InstrumentsTableTableViewController" sceneMemberID="viewController">
@@ -65,7 +65,9 @@
                             <outlet property="delegate" destination="kcF-HJ-VcJ" id="HuJ-0y-cuX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Fdf-u8-eJP"/>
+                    <navigationItem key="navigationItem" title="Instruments" id="Fdf-u8-eJP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9P8-C3-OWf"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msr-Zi-3AM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
