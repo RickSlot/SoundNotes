@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, DBSessionDelegate, DBNetworkRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

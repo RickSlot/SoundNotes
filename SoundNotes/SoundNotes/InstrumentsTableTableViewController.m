@@ -26,88 +26,100 @@
 {
     [super viewDidLoad];
     NSLog(@"instruments:");
+    NSLog(@"%@", _soundNote.name);
+
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSLog(@"items: %d", [[_soundNote.instruments allObjects] count]);
+    return [[_soundNote.instruments allObjects] count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstrumentsCell"];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"InstrumentsCell"];
+    }
     
+    cell.textLabel.text = [[[_soundNote.instruments allObjects]objectAtIndex:indexPath.row] name];
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"showInstrument" sender:self];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        NSLog(@"deleted object");
+        [_soundNote removeInstrumentsObject:[[_soundNote.instruments allObjects]objectAtIndex:indexPath.row]];
+        [self saveAndReload];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    InstrumentViewController *ivc = (InstrumentViewController *) [segue destinationViewController];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    ivc.instrument = [[_soundNote.instruments allObjects]objectAtIndex:indexPath.row];
+    
+    ivc.managedObjectContext = self.managedObjectContext;
+    
 }
-*/
+
+- (IBAction)addInstrumentbutton:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"New Instrument!" message:@"Please enter the name of your new Instrument!" delegate:self cancelButtonTitle:@"Create!" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag = 1;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag == 1){
+        [self createAndSaveInstrumentWithName:[[alertView textFieldAtIndex:0] text]];
+    }
+}
+
+-(void)createAndSaveInstrumentWithName:(NSString *) name{
+    Instruments *instrument = (Instruments *)[NSEntityDescription insertNewObjectForEntityForName:@"Instruments" inManagedObjectContext:self.managedObjectContext];
+    instrument.name = name;
+    instrument.soundFile = [[NSUUID UUID] UUIDString];
+    [_soundNote addInstrumentsObject:instrument];
+    NSLog(@"%d", [_soundNote.instruments count]);
+    [self saveAndReload];
+    
+}
+
+-(void) saveAndReload{
+    NSError *error;
+    if(![self.managedObjectContext save:&error]){
+        NSLog(@"Error: %@", error);
+    }else{
+        [self.tableView reloadData];
+    }
+}
+
+
+
 
 @end

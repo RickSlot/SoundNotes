@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <DropboxSDK/DropboxSDK.h>
 
-@implementation AppDelegate
+
+@implementation AppDelegate 
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -16,10 +18,75 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    NSString* appKey = @"df75awiihn1imvw";
+	NSString* appSecret = @"f4mvkl3md99g4z2";
+	NSString *root = kDBRootAppFolder; // Should be set to either kDBRootAppFolder or kDBRootDropbox
+	// You can determine if you have App folder access or Full Dropbox along with your consumer key/secret
+	// from https://dropbox.com/developers/apps
+	
+	// Look below where the DBSession is created to understand how to use DBSession in your app
+	
+	NSString* errorMsg = nil;
+	if ([appKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+		errorMsg = @"Make sure you set the app key correctly in DBRouletteAppDelegate.m";
+	} else if ([appSecret rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+		errorMsg = @"Make sure you set the app secret correctly in DBRouletteAppDelegate.m";
+	} else if ([root length] == 0) {
+		errorMsg = @"Set your root to use either App Folder of full Dropbox";
+	} else {
+		NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+		NSData *plistData = [NSData dataWithContentsOfFile:plistPath];
+		NSDictionary *loadedPlist =
+        [NSPropertyListSerialization
+         propertyListFromData:plistData mutabilityOption:0 format:NULL errorDescription:NULL];
+		NSString *scheme = [[[[loadedPlist objectForKey:@"CFBundleURLTypes"] objectAtIndex:0] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
+		if ([scheme isEqual:@"db-APP_KEY"]) {
+			errorMsg = @"Set your URL scheme correctly in DBRoulette-Info.plist";
+		}
+	}
+	
+	DBSession* session =
+    [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:root];
+	session.delegate = self; // DBSessionDelegate methods allow you to handle re-authenticating
+	[DBSession setSharedSession:session];
+	
+	[DBRequest setNetworkRequestDelegate:self];
+    
+	if (errorMsg != nil) {
+		[[[UIAlertView alloc]
+		   initWithTitle:@"Error Configuring Session" message:errorMsg
+		   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+		 show];
+	}
+    
+    
+	
+	NSURL *launchURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+	NSInteger majorVersion =
+    [[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] integerValue];
+	if (launchURL && majorVersion < 4) {
+		// Pre-iOS 4.0 won't call application:handleOpenURL; this code is only needed if you support
+		// iOS versions 3.2 or below
+		[self application:application handleOpenURL:launchURL];
+		return NO;
+	}
+    
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     MainViewController *controller = (MainViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+	if ([[DBSession sharedSession] handleOpenURL:url]) {
+		if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"linked to dropbox!");
+		}
+		return YES;
+	}
+	
+	return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -62,6 +129,27 @@
             abort();
         } 
     }
+}
+
+#pragma mark -
+#pragma mark DBNetworkRequestDelegate methods
+
+static int outstandingRequests;
+
+- (void)networkRequestStarted {
+    NSLog(@"network request started");
+	outstandingRequests++;
+	if (outstandingRequests == 1) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	}
+}
+
+- (void)networkRequestStopped {
+    NSLog(@"network request stopped");
+	outstandingRequests--;
+	if (outstandingRequests == 0) {
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	}
 }
 
 #pragma mark - Core Data stack

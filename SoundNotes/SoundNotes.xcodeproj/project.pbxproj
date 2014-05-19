@@ -23,10 +23,16 @@
 		1D0986E11912DB7D00F78C8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986DF1912DB7D00F78C8C /* InfoPlist.strings */; };
 		1D0986E31912DB7D00F78C8C /* SoundNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */; };
 		1D0986ED1912DBCD00F78C8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0986EC1912DBCD00F78C8C /* Main.storyboard */; };
+		1D199BCB192A89A400922A08 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D199BCA192A89A400922A08 /* DropboxSDK.framework */; };
+		1D199BCD192A89EA00922A08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D199BCC192A89EA00922A08 /* Security.framework */; };
+		1D199BCF192A89F300922A08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D199BCE192A89F300922A08 /* QuartzCore.framework */; };
 		1D23312E1915425900006151 /* Instruments.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23312D1915425900006151 /* Instruments.m */; };
 		1D2331311915425900006151 /* SoundNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2331301915425900006151 /* SoundNote.m */; };
 		1D233134191547F800006151 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D233133191547F800006151 /* MainViewController.m */; };
 		1DBDE28C1916C024004B1F1A /* InstrumentsTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */; };
+		1DC17432191E4C41008B37AA /* InstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC17431191E4C41008B37AA /* InstrumentViewController.m */; };
+		1DC17434191E5534008B37AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC17433191E5534008B37AA /* AVFoundation.framework */; };
+		1DC17437191E554D008B37AA /* SoundRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC17436191E554D008B37AA /* SoundRecorder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,9 @@
 		1D0986E01912DB7D00F78C8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D0986E21912DB7D00F78C8C /* SoundNotesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundNotesTests.m; sourceTree = "<group>"; };
 		1D0986EC1912DBCD00F78C8C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1D199BCA192A89A400922A08 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		1D199BCC192A89EA00922A08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1D199BCE192A89F300922A08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1D23312C1915425900006151 /* Instruments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instruments.h; sourceTree = "<group>"; };
 		1D23312D1915425900006151 /* Instruments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instruments.m; sourceTree = "<group>"; };
 		1D23312F1915425900006151 /* SoundNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundNote.h; sourceTree = "<group>"; };
@@ -67,6 +76,11 @@
 		1D233133191547F800006151 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		1DBDE28A1916C024004B1F1A /* InstrumentsTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentsTableTableViewController.h; sourceTree = "<group>"; };
 		1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentsTableTableViewController.m; sourceTree = "<group>"; };
+		1DC17430191E4C41008B37AA /* InstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentViewController.h; sourceTree = "<group>"; };
+		1DC17431191E4C41008B37AA /* InstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentViewController.m; sourceTree = "<group>"; };
+		1DC17433191E5534008B37AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1DC17435191E554D008B37AA /* SoundRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundRecorder.h; sourceTree = "<group>"; };
+		1DC17436191E554D008B37AA /* SoundRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundRecorder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +88,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D199BCF192A89F300922A08 /* QuartzCore.framework in Frameworks */,
+				1D199BCD192A89EA00922A08 /* Security.framework in Frameworks */,
+				1D199BCB192A89A400922A08 /* DropboxSDK.framework in Frameworks */,
+				1DC17434191E5534008B37AA /* AVFoundation.framework in Frameworks */,
 				1D0986BA1912DB7D00F78C8C /* CoreGraphics.framework in Frameworks */,
 				1D0986BE1912DB7D00F78C8C /* CoreData.framework in Frameworks */,
 				1D0986BC1912DB7D00F78C8C /* UIKit.framework in Frameworks */,
@@ -117,6 +135,10 @@
 		1D0986B61912DB7D00F78C8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D199BCE192A89F300922A08 /* QuartzCore.framework */,
+				1D199BCC192A89EA00922A08 /* Security.framework */,
+				1D199BCA192A89A400922A08 /* DropboxSDK.framework */,
+				1DC17433191E5534008B37AA /* AVFoundation.framework */,
 				1D0986B71912DB7D00F78C8C /* Foundation.framework */,
 				1D0986B91912DB7D00F78C8C /* CoreGraphics.framework */,
 				1D0986BB1912DB7D00F78C8C /* UIKit.framework */,
@@ -188,6 +210,10 @@
 				1DBDE28B1916C024004B1F1A /* InstrumentsTableTableViewController.m */,
 				1D233132191547F800006151 /* MainViewController.h */,
 				1D233133191547F800006151 /* MainViewController.m */,
+				1DC17430191E4C41008B37AA /* InstrumentViewController.h */,
+				1DC17431191E4C41008B37AA /* InstrumentViewController.m */,
+				1DC17435191E554D008B37AA /* SoundRecorder.h */,
+				1DC17436191E554D008B37AA /* SoundRecorder.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -301,6 +327,8 @@
 				1D0986CA1912DB7D00F78C8C /* AppDelegate.m in Sources */,
 				1D0986C61912DB7D00F78C8C /* main.m in Sources */,
 				1D0986CD1912DB7D00F78C8C /* SoundNotes.xcdatamodeld in Sources */,
+				1DC17437191E554D008B37AA /* SoundRecorder.m in Sources */,
+				1DC17432191E4C41008B37AA /* InstrumentViewController.m in Sources */,
 				1D2331311915425900006151 /* SoundNote.m in Sources */,
 				1DBDE28C1916C024004B1F1A /* InstrumentsTableTableViewController.m in Sources */,
 			);
@@ -419,6 +447,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
 				INFOPLIST_FILE = "SoundNotes/SoundNotes-Info.plist";
@@ -432,6 +464,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SoundNotes/SoundNotes-Prefix.pch";
 				INFOPLIST_FILE = "SoundNotes/SoundNotes-Info.plist";

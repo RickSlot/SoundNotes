@@ -162,6 +162,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     InstrumentsTableTableViewController *itvc = (InstrumentsTableTableViewController *) [segue destinationViewController];
+    itvc.managedObjectContext = self.managedObjectContext;
     NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
     SoundNote *selectedSoundNote = (SoundNote *) [self.fetchedResultsController objectAtIndexPath:ip];
     itvc.soundNote = selectedSoundNote;
