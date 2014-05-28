@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
 @property (nonatomic, strong) SoundRecorder *recorder;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (nonatomic, retain) IBOutlet UIScrollView* scrollView;
@@ -27,6 +28,8 @@
 
 BOOL recording = NO;
 BOOL keyboardIsShown = NO;
+int numUploads = 0;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,20 +68,26 @@ BOOL keyboardIsShown = NO;
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:self.view.window];
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:self.view.window];
+
     keyboardIsShown = NO;
     //make contentSize bigger than your scrollSize (you will need to figure out for your own use case)
-    CGSize scrollContentSize = CGSizeMake(320, 1000);
+    CGSize scrollContentSize = CGSizeMake(320, 700);
     self.scrollView.contentSize = scrollContentSize;
-    self.scrollView.pagingEnabled = YES;
+    [self.scrollView setScrollEnabled:YES];
+    self.scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [self.uploadButton addGestureRecognizer:longPress];
+    [self writeToTextFile:self.instrument];
+
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    if([[DBSession sharedSession] isLinked]){
+        [self.uploadButton setTitle:@"Upload" forState:UIControlStateNormal];
+    }else{
+        [self.uploadButton setTitle:@"Dropbox" forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,7 +97,12 @@ BOOL keyboardIsShown = NO;
 }
 
 -(void)saveInstrument{
+    NSLog(@"saving instrument:");
     NSError *error;
+    _instrument.name = self.nameTextField.text;
+    _instrument.key = self.keyTextField.text;
+    _instrument.notes = self.notesTextView.text;
+    _instrument.lyrics = self.lyricsTextView.text;
     if(![self.managedObjectContext save:&error]){
         NSLog(@"Error: %@", error);
     }
@@ -109,15 +123,23 @@ BOOL keyboardIsShown = NO;
 
 - (IBAction)dropBoxClicked:(id)sender {
     NSLog(@"dropbox clicked");
+    //if not linked
     if (![[DBSession sharedSession] isLinked]) {
         NSLog(@"linked!");
 		[[DBSession sharedSession] linkFromController:self];
-    } else {
-        [[DBSession sharedSession] unlinkAll];
-        NSLog(@"unlinked!");
+    } else { // if linked
+        [self uploadProject];
     }
-
 }
+
+- (void)longPress:(UILongPressGestureRecognizer*)gesture {
+    if([[DBSession sharedSession] isLinked]){
+        [[DBSession sharedSession] unlinkAll];
+        [self.uploadButton setTitle:@"Dropbox" forState:UIControlStateNormal];
+    }
+}
+
+
 
 - (DBRestClient *)restClient {
     if (!_restClient) {
@@ -127,36 +149,56 @@ BOOL keyboardIsShown = NO;
     }
     return _restClient;
 }
-- (IBAction)uploadButtonClicked:(id)sender {
-    [self uploadProject];
-}
 
 -(void) uploadProject{
-    SoundNote *soundNote = (SoundNote *) _instrument.soundNote;
-    NSString *destDir = [[NSString alloc] initWithFormat:@"/%@", soundNote.name];
-    
-    for(Instruments *instrument in soundNote.instruments){
-        NSString *filename = [[NSString alloc] initWithFormat:@"%@.m4a", instrument.soundFile];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"%@/%@", soundNote.name, filename]];
+    if(numUploads == 0){
+        SoundNote *soundNote = (SoundNote *) _instrument.soundNote;
+        NSString *destDir = [[NSString alloc] initWithFormat:@"/%@", soundNote.name];
         
-        [[self restClient] uploadFile:filename toPath:destDir
-                        withParentRev:nil fromPath:dataPath];
-        
-    }
+        for(Instruments *instrument in soundNote.instruments){
+            NSString *filename = [[NSString alloc] initWithFormat:@"%@.m4a", instrument.soundFile];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"%@/%@", soundNote.name, filename]];
+            
+            [[self restClient] uploadFile:filename toPath:destDir
+                            withParentRev:nil fromPath:dataPath];
+            numUploads++;
+            
+            filename= [[NSString alloc] initWithFormat:@"%@.txt", instrument.name];
+            dataPath = [documentsDirectory stringByAppendingPathComponent:[[NSString alloc] initWithFormat:@"%@/%@", soundNote.name, filename]];
 
-    
+            
+            [[self restClient] uploadFile:filename toPath:destDir
+                            withParentRev:nil fromPath:dataPath];
+            numUploads++;
+            
+        }
+        [self.uploadButton setTitle:@"Uploading..." forState:UIControlStateNormal];
+        [self.uploadButton setEnabled:NO];
+    }
 }
 
 - (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath
               from:(NSString*)srcPath metadata:(DBMetadata*)metadata {
-    
-    NSLog(@"File uploaded successfully to path: %@", metadata.path);
+    numUploads--;
+    if(numUploads == 0){
+        [self.uploadButton setTitle:@"Upload" forState:UIControlStateNormal];
+        [self.uploadButton setEnabled:YES];
+        [[[UIAlertView alloc]
+          initWithTitle:@"Upload succesfull" message:@"project has been uploaded successfull!"
+          delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+         show];
+    }
+
 }
 
 - (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error {
-    NSLog(@"File upload failed with error - %@", error);
+    numUploads--;
+    if(numUploads == 0){
+        [self.uploadButton setTitle:@"Upload" forState:UIControlStateNormal];
+        [self.uploadButton setEnabled:YES];
+    }
 }
 
 #pragma mark - textfield stuff
@@ -167,15 +209,23 @@ BOOL keyboardIsShown = NO;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    _instrument.name = self.nameTextField.text;
-    _instrument.key = self.keyTextField.text;
-    _instrument.notes = self.notesTextView.text;
-    _instrument.lyrics = self.lyricsTextView.text;
+    [self writeToTextFile:self.instrument];
     [self saveInstrument];
     return YES;
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView{
+- (void) textViewDidBeginEditing:(UITextView *)textView{
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                  self.scrollView.frame.origin.y - 160,
+                                  self.scrollView.frame.size.width,
+                                  self.scrollView.frame.size.height);   //resize
+}
+
+-(void) textViewDidEndEditing:(UITextView *)textView{
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+                                       self.scrollView.frame.origin.y + 160,
+                                       self.scrollView.frame.size.width,
+                                       self.scrollView.frame.size.height);   //resize
     [textView resignFirstResponder];
 }
 
@@ -184,53 +234,30 @@ BOOL keyboardIsShown = NO;
     [self.keyTextField resignFirstResponder];
     [self.lyricsTextView resignFirstResponder];
     [self.notesTextView resignFirstResponder];
+    [self writeToTextFile:self.instrument];
+    [self saveInstrument];
 }
 
-- (void)keyboardWillHide:(NSNotification *)n
-{
-    NSDictionary* userInfo = [n userInfo];
+-(void) writeToTextFile:(Instruments *)instrument{
+    NSLog(@"writing to file!");
+    SoundNote *soundNote = (SoundNote *) instrument.soundNote;
+    //get the documents directory:
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    //make a file name to write the data to using the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@/%@/%@.txt",
+                          documentsDirectory, soundNote.name, instrument.name];
+    //create content - four lines of text
+    NSString *content = [[NSString alloc] initWithFormat:@"%@\n%@\n%@\n%@\n", instrument.name, instrument.key, instrument.lyrics, instrument.notes];//save content to the documents directory
+    NSError *error = nil;
+    [content writeToFile:fileName
+              atomically:NO
+                encoding:NSStringEncodingConversionAllowLossy
+                   error:&error];
+    NSLog(@"%@", error);
     
-    
-    // resize the scrollview
-    CGRect viewFrame = self.scrollView.frame;
-    // I'm also subtracting a constant kTabBarHeight because my UIScrollView was offset by the UITabBar so really only the portion of the keyboard that is leftover pass the UITabBar is obscuring my UIScrollView.
-    viewFrame.size.height += 320;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
-    
-    keyboardIsShown = NO;
 }
-
-- (void)keyboardWillShow:(NSNotification *)n
-{
-    // This is an ivar I'm using to ensure that we do not do the frame size adjustment on the `UIScrollView` if the keyboard is already shown.  This can happen if the user, after fixing editing a `UITextField`, scrolls the resized `UIScrollView` to another `UITextField` and attempts to edit the next `UITextField`.  If we were to resize the `UIScrollView` again, it would be disastrous.  NOTE: The keyboard notification will fire even when the keyboard is already shown.
-    if (keyboardIsShown) {
-        return;
-    }
-    
-    NSDictionary* userInfo = [n userInfo];
-    
-    // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    // resize the noteView
-    CGRect viewFrame = self.scrollView.frame;
-    // I'm also subtracting a constant kTabBarHeight because my UIScrollView was offset by the UITabBar so really only the portion of the keyboard that is leftover pass the UITabBar is obscuring my UIScrollView.
-    viewFrame.size.height -= 320;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
-    keyboardIsShown = YES;
-}
-
-
 
 @end
