@@ -71,7 +71,7 @@ int numUploads = 0;
 
     keyboardIsShown = NO;
     //make contentSize bigger than your scrollSize (you will need to figure out for your own use case)
-    CGSize scrollContentSize = CGSizeMake(320, 700);
+    CGSize scrollContentSize = CGSizeMake(320, 502);
     self.scrollView.contentSize = scrollContentSize;
     [self.scrollView setScrollEnabled:YES];
     self.scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -215,17 +215,19 @@ int numUploads = 0;
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
-    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
-                                  self.scrollView.frame.origin.y - 160,
-                                  self.scrollView.frame.size.width,
-                                  self.scrollView.frame.size.height);   //resize
+//    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+//                                  self.scrollView.frame.origin.y - 160,
+//                                  self.scrollView.frame.size.width,
+//                                  self.scrollView.frame.size.height);   //resize
 }
 
 -(void) textViewDidEndEditing:(UITextView *)textView{
-    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
-                                       self.scrollView.frame.origin.y + 160,
-                                       self.scrollView.frame.size.width,
-                                       self.scrollView.frame.size.height);   //resize
+//    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
+//                                       self.scrollView.frame.origin.y + 160,
+//                                       self.scrollView.frame.size.width,
+//                                       self.scrollView.frame.size.height);   //resize
+    CGPoint bottomOffset = CGPointMake(0, -50);
+    [self.scrollView setContentOffset:bottomOffset animated:YES];
     [textView resignFirstResponder];
 }
 
