@@ -21,31 +21,10 @@
     
     NSString* appKey = @"df75awiihn1imvw";
 	NSString* appSecret = @"f4mvkl3md99g4z2";
-	NSString *root = kDBRootAppFolder; // Should be set to either kDBRootAppFolder or kDBRootDropbox
-	// You can determine if you have App folder access or Full Dropbox along with your consumer key/secret
-	// from https://dropbox.com/developers/apps
-	
-	// Look below where the DBSession is created to understand how to use DBSession in your app
+	NSString *root = kDBRootAppFolder;
+
 	
 	NSString* errorMsg = nil;
-	if ([appKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the app key correctly in DBRouletteAppDelegate.m";
-	} else if ([appSecret rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-		errorMsg = @"Make sure you set the app secret correctly in DBRouletteAppDelegate.m";
-	} else if ([root length] == 0) {
-		errorMsg = @"Set your root to use either App Folder of full Dropbox";
-	} else {
-		NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
-		NSData *plistData = [NSData dataWithContentsOfFile:plistPath];
-		NSDictionary *loadedPlist =
-        [NSPropertyListSerialization
-         propertyListFromData:plistData mutabilityOption:0 format:NULL errorDescription:NULL];
-		NSString *scheme = [[[[loadedPlist objectForKey:@"CFBundleURLTypes"] objectAtIndex:0] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
-		if ([scheme isEqual:@"db-APP_KEY"]) {
-			errorMsg = @"Set your URL scheme correctly in DBRoulette-Info.plist";
-		}
-	}
-	
 	DBSession* session =
     [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:root];
 	session.delegate = self; // DBSessionDelegate methods allow you to handle re-authenticating
@@ -195,29 +174,7 @@ static int outstandingRequests;
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
+
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
@@ -231,6 +188,9 @@ static int outstandingRequests;
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+-(void) sessionDidReceiveAuthorizationFailure:(DBSession *)session userId:(NSString *)userId{
+    NSLog(@"authorization failure");
 }
 
 @end

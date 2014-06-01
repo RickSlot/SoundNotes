@@ -35,7 +35,6 @@ int numUploads = 0;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -82,6 +81,9 @@ int numUploads = 0;
 
 }
 
+/**
+ * This function changes the upload button text if it is linked or not
+ */
 -(void) viewWillAppear:(BOOL)animated{
     if([[DBSession sharedSession] isLinked]){
         [self.uploadButton setTitle:@"Upload" forState:UIControlStateNormal];
@@ -93,11 +95,12 @@ int numUploads = 0;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+/**
+ * This function saves a instrument to core data
+ */
 -(void)saveInstrument{
-    NSLog(@"saving instrument:");
     NSError *error;
     _instrument.name = self.nameTextField.text;
     _instrument.key = self.keyTextField.text;
@@ -108,6 +111,9 @@ int numUploads = 0;
     }
 }
 
+/**
+ * This function records a sound when the record button is clicked
+ */
 - (IBAction)recordButtonClicked:(id)sender {
     recording = !recording;
     if (recording) {
@@ -117,21 +123,29 @@ int numUploads = 0;
     }
     [self.recorder record];
 }
+
+/**
+ * This function plays a sound when the play button is clicked
+ */
 - (IBAction)playButtonClicked:(id)sender {
     [self.recorder play];
 }
 
+/**
+ * This function links or uploads files when the dropbox/upload button is clicked
+ */
 - (IBAction)dropBoxClicked:(id)sender {
-    NSLog(@"dropbox clicked");
     //if not linked
     if (![[DBSession sharedSession] isLinked]) {
-        NSLog(@"linked!");
 		[[DBSession sharedSession] linkFromController:self];
     } else { // if linked
         [self uploadProject];
     }
 }
 
+/**
+ * This function unlinks dropbox when the upload button registers a long press
+ */
 - (void)longPress:(UILongPressGestureRecognizer*)gesture {
     if([[DBSession sharedSession] isLinked]){
         [[DBSession sharedSession] unlinkAll];
@@ -140,7 +154,9 @@ int numUploads = 0;
 }
 
 
-
+/**
+ * This function returns a DBRestclient instance which can be used to upload files
+ */
 - (DBRestClient *)restClient {
     if (!_restClient) {
         _restClient =
@@ -150,6 +166,9 @@ int numUploads = 0;
     return _restClient;
 }
 
+/**
+ * This function uploads all files of a soundnote to the linked dropbox account
+ */
 -(void) uploadProject{
     if(numUploads == 0){
         SoundNote *soundNote = (SoundNote *) _instrument.soundNote;
@@ -193,6 +212,9 @@ int numUploads = 0;
 
 }
 
+/**
+ * This function is called when something goes wrong with uploading
+ */
 - (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error {
     numUploads--;
     if(numUploads == 0){
@@ -203,10 +225,16 @@ int numUploads = 0;
 
 #pragma mark - textfield stuff
 
+/**
+ * This function removes the keyboard when editing is done
+ */
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
 }
 
+/**
+ * This function saves all data when editing is done
+ */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self writeToTextFile:self.instrument];
@@ -214,23 +242,18 @@ int numUploads = 0;
     return YES;
 }
 
-- (void) textViewDidBeginEditing:(UITextView *)textView{
-//    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
-//                                  self.scrollView.frame.origin.y - 160,
-//                                  self.scrollView.frame.size.width,
-//                                  self.scrollView.frame.size.height);   //resize
-}
-
+/**
+ * This function is called when a textview is stopped editing, it moves the position of the scrollview down
+ */
 -(void) textViewDidEndEditing:(UITextView *)textView{
-//    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x,
-//                                       self.scrollView.frame.origin.y + 160,
-//                                       self.scrollView.frame.size.width,
-//                                       self.scrollView.frame.size.height);   //resize
     CGPoint bottomOffset = CGPointMake(0, -50);
     [self.scrollView setContentOffset:bottomOffset animated:YES];
     [textView resignFirstResponder];
 }
 
+/**
+ * this function removes the keyboard from the screen and saves the instrument
+ */
 -(void)dismissKeyboard {
     [self.nameTextField resignFirstResponder];
     [self.keyTextField resignFirstResponder];
@@ -240,8 +263,11 @@ int numUploads = 0;
     [self saveInstrument];
 }
 
+
+/**
+ * This function writes all the properties of an instrument to a .txt file
+ */
 -(void) writeToTextFile:(Instruments *)instrument{
-    NSLog(@"writing to file!");
     SoundNote *soundNote = (SoundNote *) instrument.soundNote;
     //get the documents directory:
     NSArray *paths = NSSearchPathForDirectoriesInDomains
@@ -258,7 +284,6 @@ int numUploads = 0;
               atomically:NO
                 encoding:NSStringEncodingConversionAllowLossy
                    error:&error];
-    NSLog(@"%@", error);
     
 }
 

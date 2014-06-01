@@ -12,6 +12,9 @@
 
 NSURL *outputFileUrl = nil;
 
+/**
+ * This function returns a new soundrecorder instance with the destination folder set to the given folder name
+ */
 -(id) initWithFolderName: (NSString *) folderName fileName: (NSString *) fileName{
     if( self=[super init] )
     {
@@ -47,6 +50,9 @@ NSURL *outputFileUrl = nil;
     return self;
 }
 
+/**
+ * This function starts recording when it is not recording. if it is recording it stops recording
+ */
 -(void) record{
     if (!_recorder.recording) {
         [_recorder prepareToRecord];
@@ -64,10 +70,9 @@ NSURL *outputFileUrl = nil;
     }
 }
 
-- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
-    NSLog(@"recording did finish protocol");
-}
-
+/**
+ * This function plays the sound that has been recorded
+ */
 -(void) play{
     if (!_recorder.recording){
         NSLog(@"play sound:");
@@ -82,11 +87,6 @@ NSURL *outputFileUrl = nil;
     }
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    NSLog(@"finished playing!");
-}
-- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error{
-    NSLog(@"decode error");
-}
+
 
 @end

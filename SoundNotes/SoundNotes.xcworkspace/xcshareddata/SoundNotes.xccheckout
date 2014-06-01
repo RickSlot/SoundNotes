@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>63FEF232-54C9-4C28-B32D-D4CD4831EAF9</string>
+	<string>6464C8A8-36C5-4DC6-953F-5B1F4D6BDA6A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SoundNotes</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B474D587-05F9-4E19-A311-68CB0AA18AED</key>
+		<key>4EBF3831-24C5-4189-86FF-8943F71626D0</key>
 		<string>https://github.com/RickSlot/SoundNotes.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SoundNotes/SoundNotes.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B474D587-05F9-4E19-A311-68CB0AA18AED</key>
+		<key>4EBF3831-24C5-4189-86FF-8943F71626D0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B474D587-05F9-4E19-A311-68CB0AA18AED</string>
+	<string>4EBF3831-24C5-4189-86FF-8943F71626D0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B474D587-05F9-4E19-A311-68CB0AA18AED</string>
+			<string>4EBF3831-24C5-4189-86FF-8943F71626D0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SoundNotes</string>
 		</dict>
